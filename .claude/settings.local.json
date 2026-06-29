@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Read(//usr/local/bin/**)",
+      "Bash(command -v node)",
+      "Bash(brew list *)",
+      "Bash(brew --version)",
+      "Bash(ls /opt/homebrew/bin/ 2>/dev/null | head -5 || ls /usr/local/Homebrew 2>/dev/null | head -5 || echo \"no homebrew\")",
+      "Bash(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh)",
+      "Bash(bash)",
+      "Bash(curl -s -X POST http://localhost:3001/api/signup -H 'Content-Type: application/json' -d '{\"name\":\"Test Rep\",\"email\":\"test@test.com\",\"company\":\"Medtronic\",\"password\":\"password123\"}')",
+      "Bash(python3 -m json.tool)",
+      "Bash(pkill -f \"node server/index.js\")",
+      "Bash(git --version)",
+      "Bash(git config *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Initial commit — Device Savant v1 *)"
+    ]
+  }
+}
