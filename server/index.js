@@ -123,6 +123,9 @@ if (isProd) {
   });
 }
 
-initDb().then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start server immediately so Railway health checks pass, then connect DB
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+initDb().catch((err) => {
+  console.error('DB init failed — check DATABASE_URL:', err.message);
 });
