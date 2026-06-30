@@ -12,8 +12,11 @@ const JWT_SECRET = process.env.JWT_SECRET || 'device-savant-secret-2024';
 const PORT = process.env.PORT || 3001;
 const isProd = process.env.NODE_ENV === 'production';
 
-const connectionString = process.env.DATABASE_PUBLIC_URL || process.env.DATABASE_URL || process.env.POSTGRES_URL;
-console.log('DB connection:', connectionString ? 'found' : 'MISSING');
+const connectionString = process.env.DATABASE_PUBLIC_URL
+  || process.env.DATABASE_URL
+  || process.env.POSTGRES_URL
+  || 'postgresql://postgres:BdThcOYOpcqGwDmuuNLFpzmJZgbCGfvc@postgres.railway.internal:5432/railway';
+console.log('DB connection:', connectionString.includes('railway.internal') ? 'using internal URL' : 'using env var');
 
 const pool = new Pool({
   connectionString,
