@@ -12,23 +12,13 @@ const JWT_SECRET = process.env.JWT_SECRET || 'device-savant-secret-2024';
 const PORT = process.env.PORT || 3001;
 const isProd = process.env.NODE_ENV === 'production';
 
-console.log('PGHOST:', process.env.PGHOST || 'MISSING');
+const connectionString = process.env.DATABASE_PUBLIC_URL || process.env.DATABASE_URL || process.env.POSTGRES_URL;
+console.log('DB connection:', connectionString ? 'found' : 'MISSING');
 
-const pool = new Pool(
-  process.env.PGHOST
-    ? {
-        host: process.env.PGHOST,
-        port: process.env.PGPORT || 5432,
-        database: process.env.PGDATABASE,
-        user: process.env.PGUSER,
-        password: process.env.PGPASSWORD,
-        ssl: isProd ? { rejectUnauthorized: false } : false,
-      }
-    : {
-        connectionString: process.env.DATABASE_URL,
-        ssl: isProd ? { rejectUnauthorized: false } : false,
-      }
-);
+const pool = new Pool({
+  connectionString,
+  ssl: { rejectUnauthorized: false },
+});
 
 async function initDb() {
   await pool.query(`
