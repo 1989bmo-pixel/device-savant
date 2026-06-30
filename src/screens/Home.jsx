@@ -3,9 +3,10 @@ import { useAuth } from '../context/AuthContext';
 import { scenarios } from '../data/scenarios';
 
 const SPECIALTY_COLORS = {
-  'Electrophysiology': { bg: 'rgba(79,142,247,0.12)', text: '#93c5fd' },
-  'Structural Heart':  { bg: 'rgba(251,146,60,0.12)',  text: '#fdba74' },
-  'Neuromodulation':   { bg: 'rgba(167,139,250,0.12)', text: '#c4b5fd' },
+  'Electrophysiology':      { bg: 'rgba(79,142,247,0.12)',  text: '#93c5fd' },
+  'Structural Heart':       { bg: 'rgba(251,146,60,0.12)',  text: '#fdba74' },
+  'Neuromodulation':        { bg: 'rgba(167,139,250,0.12)', text: '#c4b5fd' },
+  'Vascular / Interventional': { bg: 'rgba(20,184,166,0.12)',  text: '#5eead4' },
 };
 
 export default function Home() {
