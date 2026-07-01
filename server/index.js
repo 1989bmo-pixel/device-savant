@@ -46,7 +46,7 @@ async function initDb() {
 }
 
 const app = express();
-app.use(cors({ origin: isProd ? 'https://devicesavant.com' : 'http://localhost:5173' }));
+app.use(cors({ origin: isProd ? ['https://devicesavant.com', 'https://www.devicesavant.com', /\.railway\.app$/] : 'http://localhost:5173' }));
 app.use(express.json());
 
 if (isProd) {
